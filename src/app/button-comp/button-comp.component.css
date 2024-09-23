@@ -1,0 +1,14 @@
+button{
+    width: 100px;
+    height: 40px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.submit, .signUp{
+    background-color: rgb(78, 78, 221);
+
+}

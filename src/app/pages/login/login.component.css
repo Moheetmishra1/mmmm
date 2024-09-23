@@ -1,0 +1,73 @@
+
+.loginBack{
+    height: 100vh;
+    background-color: rgb(26, 24, 24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2em; */
+}
+.form-error{
+    /* height: 2em; */
+    color: red;
+    text-align: center;
+}
+.form-signin{
+    width: 30vw;
+    box-shadow: 2px 2px 5px rgb(88, 85, 85);
+    padding: 2em;
+    border: 10px double #7961eb;
+    border-radius: 1em;
+    background-color: 
+    ;
+}
+
+form input{
+    margin-bottom: 1em;
+}
+.control:has(.ng-invalid.ng-touched.ng-dirty) label {
+    color: #f98b75;
+  }
+
+input.ng-invalid.ng-touched.ng-dirty {
+    background-color: #fbdcd6;
+    border-color: #f84e2c;
+  }
+
+  .control-error{
+    /* height: 2em; */
+    color: red;
+  }
+.form-control{
+    border-color: #0c0c0d;
+    border-width: 800;
+    border-top: none;
+
+}
+  .control-error p{
+    text-align: center;
+  }
+
+@media (max-width:730px){
+    .form-signin{
+        width: 50vw;
+        /* height: 50vh;   */
+    }
+}
+
+@media (max-width:400px){
+    .form-signin{
+        width: 70vw;
+        height: 50vh;  
+    }
+    
+    /* h1{
+        font-size: ;
+    } */
+}
+@media (max-width:330px){
+    .form-signin{
+        /* width: 70vw; */
+        height: 55vh;  
+    }
+}

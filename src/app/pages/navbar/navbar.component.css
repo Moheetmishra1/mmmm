@@ -1,0 +1,19 @@
+.navbar{
+    height: 3em;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    /* border: 1px solid black; */
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.selected{
+
+    border-bottom: 2px solid aqua;
+}

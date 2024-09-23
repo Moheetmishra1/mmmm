@@ -1,0 +1,18 @@
+<section>
+<header>
+<p>Lorem ipsum dolor sit amet.</p>
+</header>
+
+<div class="formBox">
+    <div class="formTitle">Add</div>
+    <form #form="ngForm" (onSubmit)="addProduct()" >
+        <input type="text" name="title" ngModel>
+        <input type="text" name="description" ngModel>
+        <input type="number" name="number" ngModel>
+        <input type="text" name="image" ngModel>
+        <input type="text" name="category" ngModel>
+        <button type="submit" ><span>Add Product</span></button>
+    </form>
+</div>
+
+</section>

@@ -1,0 +1,51 @@
+
+<div class="loginBack">
+
+
+    <div   class="form-signin">
+        <form  #form="ngForm"  (ngSubmit)="onSubmit(form)">
+            <app-logo />
+         
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <div class="form-error">{{submitError()}} </div>
+          <div class="form-floating control">
+            <input type="text" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" 
+            ngModel #email="ngModel" minlength="6" maxlength="25"  required>
+            <label for="floatingInput">Enter User Name</label>
+          </div>
+          <!-- <br> -->
+          <div class="form-floating control" >
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password"
+               ngModel #password="ngModel" maxlength="15" minlength="6"  required >
+            <label for="floatingPassword">Enter Password</label>
+          </div>
+      
+          <!-- <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" (click)="onshowMe(form)" >
+            <label class="form-check-label" for="flexCheckDefault">
+              Show me
+            </label>
+          </div> -->
+          <div class="control-error">
+          <p *ngIf="(email.touched && email.dirty && email.invalid)  &&(password.touched && password.dirty && password.invalid) && !submitError() ;else emailValid">
+            Valid Username and Passwor length are 6-25 and 6-15.
+          </p>
+          <ng-template #emailValid>
+            <p *ngIf="(email.touched && email.dirty && email.invalid) && !submitError();else passwordValid " >
+                Username must contain atleast lower-upper alpabet and atleast one '_' with range 6-25.
+              </p>
+          </ng-template>
+          <ng-template #passwordValid >
+            <p *ngIf="(password.touched && password.dirty && password.invalid)&& !submitError()">
+                Password length must be 6-15 and it contains only upper-loewer-alphabet and atleast anyone  '_','+','-' character. 
+              </p>
+          </ng-template>
+          
+        </div>
+
+          <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-body-secondary">© 2017–{{year}}</p>
+        </form>
+      </div>
+    </div>
+    

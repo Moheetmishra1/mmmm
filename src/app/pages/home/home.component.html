@@ -1,0 +1,9 @@
+
+<header>
+     <app-slider [bannerImgs]="bannerImgs" />
+</header>
+
+<div *ngIf="isLoading()" style="color: blue;text-align: center;">Loading ....</div>
+<div  class="productList">
+     <app-cart *ngFor="let product of products()" [product]="product" />
+</div>

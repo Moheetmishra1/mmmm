@@ -1,0 +1,73 @@
+body{
+    background-color: rgb(60, 60, 226);
+}
+
+section{
+    height: 100vh;
+    background-color:#e2efff;
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0 0 2em 2em;
+
+}
+
+header{
+    width: 40%;
+    margin: 0 auto;
+    height: 13vh;
+    background-color: yellow;
+    background-image: radial-gradient(rgb(179, 179, 51), yellow);
+    background-image: linear-gradient(90deg,rgb(240, 183, 78),yellow);
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+form{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;  */
+    align-items: center;
+}
+.formBox{
+    width: 18vw;
+    margin-top: 4em;
+    height: 60vh;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    color: black;
+    border: 1px solid black;
+    padding: 1em;
+    padding-top: 2.5em;
+    border-radius: 2em;
+    position: relative;
+    top: -15vh;
+
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), white);
+}
+
+button{
+    width: 80%;
+    height: 2em;
+    padding: 0.4em;
+    border-radius: 4em;
+    background-color: yellow;
+    color: #ef1c0f;
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+@media screen {
+    
+}
