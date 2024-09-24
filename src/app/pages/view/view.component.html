@@ -1,12 +1,38 @@
-<div>
-    <button (click)="backToHome()">Back to Home ←</button>
-    <div><img src="{{product?.image}}" alt="No image"></div>
-    <div>
-        <p>{{product?.category}}</p>
-        <p>{{product?.description}}</p>
-        <p>{{product?.price}}</p>
-        <p>{{product?.rating}}</p>
-        <p>{{product?.title}}</p>
-       
+
+<main >
+<div class="box">
+    <div class="imageBox">
+        <img [src]="product.image" alt="no image">
     </div>
+    <div class="title-main">
+        <div>
+            <div>{{product.title}}</div>
+            <div style="text-transform: capitalize;">{{product.category}}</div>
+        </div>
+        <div>
+            <div>{{star()}}</div>
+            <div>{{product.rating.rate}}/5</div>
+        </div>
+    </div>
+    <!-- <hr> -->
+     <!-- <div class="line"></div> -->
+    <div class="title-desc">
+        <div>
+            <div>{{product.price | currency:"₹"}}</div>
+            <div style="text-transform: capitalize;">{{product.category}}</div>
+        </div>
+        <div>
+            {{product.description.slice(0,100)}}
+            <!-- <div>{{star()}}</div>
+            <div>{{product.rating.rate}}/5</div> -->
+        </div>
+    </div>
+    <div class="options">
+        <div></div>
+        <div><div>Update</div><div><img src="assets/dustbin/e-2" alt=""></div></div>
+        <div><img src="assets/dustbin/e-1.gif" alt="no image"></div>
+    </div>
+    <!-- <div>d</div> -->
 </div>
+
+</main>

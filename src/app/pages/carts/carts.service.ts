@@ -1,7 +1,8 @@
 import { PRODUCT } from './../../models/product';
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { CARTS } from './carts.model';
+import { CARTS, USER } from './carts.model';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs';
 
 
 @Injectable({
@@ -12,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class CartsService {
     allCarts=signal<CARTS[]>([]);
+    user=signal<USER|{}>({})
+    totalItem=computed(()=>this.allCarts().reduce((res,cart)=> res+cart.quantity,0))
     private httpClient = inject(HttpClient)
 
     total = computed(()=> this.allCarts().reduce((a,b)=>{
@@ -33,11 +36,65 @@ export class CartsService {
             this.allCarts.update(carts=>[...carts,{...product,quantity:1}])
         }
         console.log(this.allCarts());
-
-        return this.httpClient.post('https://fakestoreapi.com/carts')
         
+       
+    }
+    addCartToBackend(product:PRODUCT){
+        return this.httpClient.post('https://fakestoreapi.com/carts',{
+            userId :0,
+            date:'2020-02-03',
+            products:[{productId:5,quantity:1},{productId:1,quantity:5}]
+        }).pipe(
+            tap({
+                next:()=>  this.addproductToCart(product)
+            })
+        )
+    }
+    addUser(userName:string){
+        return this.httpClient.get<USER[]>('https://fakestoreapi.com/users')
+        .pipe(
+            tap({
+                next:(users)=>{
+                const obj=users.find(a=>a.username===userName)
+                if(obj){
+                    this.user.set(obj)
+                }
+                }
+            })
+        )
     }
 
+    deleteCart(productId:number){
 
+        return this.httpClient.delete('https://fakestoreapi.com/carts/6').pipe(
+            tap({
+                next:()=> {this.allCarts.set(this.allCarts().filter(a=> a.id !== productId))}
+            })
+        )
+    }
+
+    updateCart(productId:number,val:string){
+        return this.httpClient.put('https://fakestoreapi.com/carts/7',{
+            userId:3,
+            date:2019-12-10,
+            products:[{productId:1,quantity:3}]
+        }).pipe(
+            tap({
+                next:()=>this.allCarts.update((carts)=> carts.map(a=>{
+                    if(productId=== a.id){
+
+                        if(val=== 'add'){
+                           a.quantity+=1
+                            return a
+                        }else{
+                            a.quantity-=1
+                        }
+                       
+                    }
+                    return a;
+                }))
+            })
+        )
+    }
 
 }

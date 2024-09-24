@@ -1,56 +1,62 @@
 {
-  "hash": "c1cba10d",
-  "configHash": "e9084cf9",
-  "lockfileHash": "ceb3c89b",
-  "browserHash": "5e20ccb2",
+  "hash": "d013d525",
+  "configHash": "72421c53",
+  "lockfileHash": "781bb93c",
+  "browserHash": "6e6cfea7",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "9c14ef99",
+      "fileHash": "d0acb4c8",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "7879637e",
+      "fileHash": "8425750f",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "fdd66975",
+      "fileHash": "66f0563e",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "3e6d5c7a",
+      "fileHash": "1a46b139",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "701b332b",
+      "fileHash": "6641e562",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "df98ef09",
+      "fileHash": "a43b67d6",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "fcc19e0e",
+      "fileHash": "f207e94a",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../node_modules/rxjs/dist/cjs/index.js",
       "file": "rxjs.js",
-      "fileHash": "2f2ba918",
+      "fileHash": "c73bd0cb",
       "needsInterop": true
+    },
+    "tslib": {
+      "src": "../../../../../node_modules/tslib/tslib.es6.mjs",
+      "file": "tslib.js",
+      "fileHash": "1dc37830",
+      "needsInterop": false
     }
   },
   "chunks": {

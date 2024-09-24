@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, computed, DestroyRef, inject, Input, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, Input, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { PRODUCT } from '../../models/product';
-import { NgFor } from '@angular/common';
+import { CurrencyPipe, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,CurrencyPipe],
   templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+  styleUrl: './view.component.css',
+  // encapsulation:ViewEncapsulation.None
 })
 export class ViewComponent implements OnInit {
   @Input({required:true}) productId ?:string;
@@ -19,7 +20,13 @@ export class ViewComponent implements OnInit {
    private httpClient= inject(HttpClient)
    private destroyRef= inject(DestroyRef)
    private router = inject(Router)
-
+  star = computed(()=>{
+    let s=''
+    for(let i=0;i<=this.product.rating.rate;++i){
+      s+="⭐"
+    }
+    return s
+  })
 
   ngOnInit(){
     const subscription = this.httpClient.get<PRODUCT>(`https://fakestoreapi.com/products/${this.productId}`,{

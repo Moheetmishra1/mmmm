@@ -39,15 +39,20 @@ export class CartComponent {
       });
     }
     onCart(){
-     const subscription =  this.cartsService.addproductToCart(this.product).subscription({
-      error:(error)=>{
-        console.log(error);
-        
+     const subscription =  this.cartsService.addCartToBackend(this.product).subscribe({
+
+      next:(data)=>{
+        console.log(data);
+        console.log("products has been added.")
+      },
+      error:(err)=>{
+        console.log(err);        
       },
       complete:()=>{
         console.log("Product is added");
         
       }
-     })
+     });
+     this.destoryRef.onDestroy(()=>subscription.unsubscribe())
     }
 }

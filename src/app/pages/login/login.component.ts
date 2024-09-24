@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CartsService } from '../carts/carts.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,10 @@ export class LoginComponent {
   private httpClient= inject(HttpClient)
   private destoryRef= inject(DestroyRef)
   private router = inject(Router)
+  private cartsService= inject(CartsService)
 
   onSubmit(formData:NgForm){
-    console.log("click");
+    console.log(formData.form.valid);
     this.submitError.set("")
 
     setTimeout(()=>
@@ -46,6 +48,15 @@ export class LoginComponent {
         .subscribe({
           next:(data)=>{
             window.sessionStorage.setItem('token',JSON.stringify(data));
+              const subscription = this.cartsService.addUser(formData.form.value.email)
+              .subscribe({
+                error:(err)=>{
+                  console.log(err);
+                },
+                complete:()=>{
+                  console.log('Login succcessfully');
+                }
+              })
             this.router.navigate(['../'])
           }
         })

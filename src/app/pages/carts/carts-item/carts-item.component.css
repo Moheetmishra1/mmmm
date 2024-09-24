@@ -305,3 +305,30 @@ button.btn:hover{
   }
   
   /* Add more styles here... */
+
+
+  tr{
+    display: grid;
+    grid-template-columns: 8fr repeat(4, 1fr);
+  }
+
+  .buttonClass{
+    display: flex;
+    align-items: center;
+  }
+  .update{
+    height: 10px;
+    width: 15px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 213, 236);
+  }
+
+
+  .update button{
+    border: none;
+    background-color: transparent;
+    
+  }
