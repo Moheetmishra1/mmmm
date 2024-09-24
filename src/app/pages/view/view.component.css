@@ -1,4 +1,9 @@
-
+.merriweather-regular {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 
 main{
     background-color:#eeeeee ;
@@ -61,8 +66,10 @@ div{
     display: grid;
     align-items: center;
     /* border: 1px solid blue; */
-    
-    grid-template-columns: 2fr 1.5fr 1fr;
+    padding: 0 1em;
+    justify-content: center;
+    grid-template-columns: 1.5fr 1.5fr 2fr ;
+    gap: 1em;
 
 }
 
@@ -80,6 +87,81 @@ div{
 
 .update{
     display: flex;
+    justify-content:center;
     align-items: center;
+}
+.update>div{
+ height: 60%;
+ width: 100%;
+ padding: 4px;
+ /* background-color: #98d8e1; */
+ border-radius: 10px;  
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+.button-box{
+    /* height: ; */
+    width: 90%;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+    font-size: 1.2em;
+    align-content: center;
+    border-radius: 10px;
+}
+.button-box button{
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+
+}
+
+.button-box button,.button-box img{
+    height: 80%;
+}
+
+.update img{
+    height: 3em;
+    object-fit: cover;
+    object-position: center;
+    /* background-color: black; */
+}
+.buy-color{
+    margin-left: 3em;
+}
+
+.upColor>div{
+    background-color: #98d8e1;
+}
+.buy-color>div{
+    height: 100%;
+    background-color: rgb(37, 146, 104);
+    color: #eeeeee;
+}
+
+.buy-color button{
+    /* align-items: end; */
+    color: white;
+}
+.buy-color .button-box{
+    align-items: end;
+    /* font-size: 40px; */
+}
+
+.buy-color .button-box button{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.cart img{
+    height: 50% ;
+}
+
+.upCart>div{
+    background-color: gold;
 }

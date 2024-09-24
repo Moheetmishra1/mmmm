@@ -3,6 +3,7 @@ import { Component, computed, DestroyRef, inject, Input, OnInit, signal, ViewEnc
 import { PRODUCT } from '../../models/product';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { CartsService } from '../carts/carts.service';
 
 @Component({
   selector: 'app-view',
@@ -16,6 +17,8 @@ export class ViewComponent implements OnInit {
   @Input({required:true}) productId ?:string;
    product !:PRODUCT; 
    imagePath = computed(()=>this.product)
+   cartsService= inject(CartsService)
+  //  private destroyRef= inject(DestroyRef)
 
    private httpClient= inject(HttpClient)
    private destroyRef= inject(DestroyRef)
@@ -45,5 +48,27 @@ export class ViewComponent implements OnInit {
 
   backToHome(){
     this.router.navigate([''])
+  }
+
+  onAddToCart(){
+    const subscription =  this.cartsService.addCartToBackend(this.product).subscribe({
+
+      next:(data)=>{
+        console.log(data);
+        console.log("products has been added.")
+      },
+      error:(err)=>{
+        console.log(err);        
+      },
+      complete:()=>{
+        console.log("Product is added");
+        
+      }
+     });
+     this.destroyRef.onDestroy(()=>subscription.unsubscribe())
+  }
+
+  updateProduct(){
+    
   }
 }

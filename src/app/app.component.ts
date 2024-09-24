@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { NavBarHomeComponent } from './pages/nav-bar-home/nav-bar-home.component';
@@ -13,4 +13,10 @@ import { NavBarHomeComponent } from './pages/nav-bar-home/nav-bar-home.component
 })
 export class AppComponent {
   title = 'bazaar';
+  @ViewChild('hiddenNav') hiddenNav ?:ElementRef;
+  private scrollNav= viewChild('scrollNav')
+
+  showNav(){
+    if(this.scrollNav.)
+  }
 }
