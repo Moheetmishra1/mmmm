@@ -18,7 +18,6 @@ export class ViewComponent implements OnInit {
    product !:PRODUCT; 
    imagePath = computed(()=>this.product)
    cartsService= inject(CartsService)
-  //  private destroyRef= inject(DestroyRef)
 
    private httpClient= inject(HttpClient)
    private destroyRef= inject(DestroyRef)
@@ -69,6 +68,6 @@ export class ViewComponent implements OnInit {
   }
 
   updateProduct(){
-    
+    this.router.navigate(['products',this.product.category,'updateproduct',this.product.id])
   }
 }

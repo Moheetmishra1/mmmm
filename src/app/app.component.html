@@ -1,6 +1,5 @@
 <div class="body">
     <app-nav-bar-home  #hiddenNav/>
-    <app-navbar #scrollNav  (scroll)="showNav()"/>
+    <app-navbar #scrollNav  (mouseover)="showNav()"/>
     <hr>
-    <button #titleInput></button>
 <router-outlet />

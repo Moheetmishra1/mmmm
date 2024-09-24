@@ -10,6 +10,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { SpecificCategoryComponent } from './pages/products/specific-category/specific-category.component';
 import { CartComponent } from './cart/cart.component';
 import { CartsComponent } from './pages/carts/carts.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 export const routes: Routes = [
     {
@@ -31,11 +32,15 @@ export const routes: Routes = [
             {
                 path:'specificCategory',
                 component:SpecificCategoryComponent
+            },
+            {
+                path:'updateproduct/:productid',
+                component:UpdateProductComponent
             }
            
         ]
-    }
-    ,
+    },
+    
     {
         path:'signup',
         component:SignUpComponent

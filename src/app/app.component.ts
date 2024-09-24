@@ -13,10 +13,13 @@ import { NavBarHomeComponent } from './pages/nav-bar-home/nav-bar-home.component
 })
 export class AppComponent {
   title = 'bazaar';
-  @ViewChild('hiddenNav') hiddenNav ?:ElementRef;
-  private scrollNav= viewChild('scrollNav')
+  @ViewChild('hiddenNav') hiddenNav ?:ElementRef<NavbarComponent>;
+  // private scrollNav= viewChild('scrollNav')
 
   showNav(){
-    if(this.scrollNav.)
+    console.log("enter");
+    // console.log(Object.keys(this.hiddenNav));
+   
   }
+    
 }

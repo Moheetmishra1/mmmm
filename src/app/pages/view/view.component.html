@@ -14,8 +14,6 @@
             <div>{{product.rating.rate}}/5</div>
         </div>
     </div>
-    <!-- <hr> -->
-     <!-- <div class="line"></div> -->
     <div class="title-desc">
         <div>
             <div>{{product.price | currency:"₹"}}</div>
@@ -23,20 +21,15 @@
         </div>
         <div>
             {{product.description.slice(0,100)}}
-            <!-- <div>{{star()}}</div>
-            <div>{{product.rating.rate}}/5</div> -->
         </div>
     </div>
     <div class="options">
-        <!-- <div class="update buy-color"><div><div class="button-box"><button>BUY</button><div><img src="assets/dustbin/e-3.gif" alt="no image"></div></div></div></div> -->
         <div class="update upCart"><div><div class="button-box cart" (click)="onAddToCart()"><button>Cart</button><div><img src="assets/dustbin/e-4.gif" alt="no image"></div></div></div></div>
 
         <div class="update upColor"><div><div class="button-box" (click)="updateProduct()"><button>Update</button><div><img src="assets/dustbin/e-2.gif" alt="no image"></div></div></div></div>
         <div class="update buy-color"><div><div class="button-box"><button class="merriweather-regular">BUY</button><div><img src="assets/dustbin/e-3.gif" alt="no image"></div></div></div></div>
         
-        <!-- <div><img src="assets/dustbin/e-1.gif" alt="no image"></div> -->
     </div>
-    <!-- <div>d</div> -->
 </div>
 
 </main>
