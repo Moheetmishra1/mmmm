@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CARTS } from '../carts.model';
 
 @Component({
   selector: 'app-carts-item',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './carts-item.component.css'
 })
 export class CartsItemComponent {
+  @Input({required:true}) product !:CARTS;
 
 }

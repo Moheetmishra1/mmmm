@@ -1,17 +1,17 @@
 <div class="cartBox">
     <header>
-        <img [src]="product?.image"  alt="">
+        <img [src]="product.image"  alt="">
         <div class="rating" >
-            <div>{{product?.rating?.rate}} <span > {{star}}</span></div>
-            <div>{{product?.rating?.count}} <span class="material-symbols-outlined">
+            <div>{{product.rating.rate}} <span > {{star}}</span></div>
+            <div>{{product.rating.count}} <span class="material-symbols-outlined">
                 reviews
                 </span></div>
         </div>
     </header>
     <section>
         <!-- <br> -->
-        <div >{{product?.title?.slice(0,25)}}</div>
-        <div>{{product?.price| currency :"₹"}}</div>
+        <div >{{product.title.slice(0,25)}}</div>
+        <div>{{product.price| currency :"₹"}}</div>
         <div class="view-cart">
             <button class="view" (click)="onViewProducts()">View</button> 
              <button class="add-cart" (click)="onCart()">CART 🛒</button>

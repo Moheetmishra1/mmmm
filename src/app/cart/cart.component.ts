@@ -1,7 +1,8 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, DestroyRef, inject, Input } from '@angular/core';
 import { PRODUCT } from '../models/product';
 import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { CartsService } from '../pages/carts/carts.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,9 +13,11 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
 
-  @Input({required:true}) product ?:PRODUCT |undefined;
+  @Input({required:true}) product !:PRODUCT ;
   // private router = inject(Router)
   private router = inject(Router)
+  private cartsService = inject(CartsService)
+  private destoryRef= inject(DestroyRef)
 
   star=''
   ngOnInit(){
@@ -36,6 +39,15 @@ export class CartComponent {
       });
     }
     onCart(){
-
+     const subscription =  this.cartsService.addproductToCart(this.product).subscription({
+      error:(error)=>{
+        console.log(error);
+        
+      },
+      complete:()=>{
+        console.log("Product is added");
+        
+      }
+     })
     }
 }
