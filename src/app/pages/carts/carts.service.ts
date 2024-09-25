@@ -14,6 +14,7 @@ import { tap } from 'rxjs';
 export class CartsService {
     allCarts=signal<CARTS[]>([]);
     user=signal<USER|{}>({})
+    userName=''
     totalItem=computed(()=>this.allCarts().reduce((res,cart)=> res+cart.quantity,0))
     private httpClient = inject(HttpClient)
 
@@ -50,12 +51,16 @@ export class CartsService {
             })
         )
     }
-    addUser(userName:string){
+    addUser(){
+        console.log("enter to add user");
+        
         return this.httpClient.get<USER[]>('https://fakestoreapi.com/users')
         .pipe(
             tap({
                 next:(users)=>{
-                const obj=users.find(a=>a.username===userName)
+                    console.log(users);
+                    
+                const obj=users.find(a=>a.username===this.userName)
                 if(obj){
                     this.user.set(obj)
                 }

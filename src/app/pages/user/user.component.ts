@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CartsService } from './../carts/carts.service';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { USERTYPE } from '../../models/userType';
 
 @Component({
   selector: 'app-user',
@@ -8,6 +11,26 @@ import { Component } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  userId =0;
+  user:USERTYPE|{}={};
+  constructor (private cartsService :CartsService,private httpClient:HttpClient,private destroyRef:DestroyRef){  }
+
+  ngOnInit(){
+    console.log();
+    
+    const subscription = this.cartsService.addUser()
+    .subscribe({
+      next:(userDetails)=>{
+        this.user=userDetails
+      },
+      error:(err)=>{
+        console.log(err);
+      },
+      complete:()=>{
+        console.log("completed");
+      }
+    });
+    this.destroyRef.onDestroy(()=>subscription.unsubscribe())
+  }
+
 
 }

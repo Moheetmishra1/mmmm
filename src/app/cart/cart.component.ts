@@ -22,13 +22,13 @@ export class CartComponent {
   star=''
   ngOnInit(){
     let st=""
-    console.log(this.product?.rating.rate);
+    // console.log(this.product?.rating.rate);
     
     for(let i=0;i<(this.product?.rating.rate||0);++i){
         st+='⭐'
     }
     this.star=st
-    console.log(this.product);
+    // console.log(this.product);
     
   }
 
@@ -42,8 +42,8 @@ export class CartComponent {
      const subscription =  this.cartsService.addCartToBackend(this.product).subscribe({
 
       next:(data)=>{
-        console.log(data);
-        console.log("products has been added.")
+        // console.log(data);
+        // console.log("products has been added.")
       },
       error:(err)=>{
         console.log(err);        

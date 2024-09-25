@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { CartsService } from '../carts/carts.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent {
   private destoryRef= inject(DestroyRef)
   private router = inject(Router)
   private cartsService= inject(CartsService)
+  private userService = inject(UserService)
   // authenticationError  = signal({error:false,messege:''})
 
   eee=''
@@ -29,7 +31,7 @@ export class LoginComponent {
 
   onSubmit(formData:NgForm){
     this.eee=''
-    console.log(formData.form.valid);
+    console.log(formData.form.value);
     this.submitError.set("")
 
     setTimeout(()=>
@@ -41,7 +43,6 @@ export class LoginComponent {
       this.submitError.set("All fields are mandatory.")
       return ;
     }
-    console.log(formData);
     
     if((formData.status==='INVALID')){
       this.submitError.set('Form field is not valid')
@@ -54,20 +55,11 @@ export class LoginComponent {
         })
         .subscribe({
           next:(data)=>{
+            console.log(data);
+            
             window.sessionStorage.setItem('token',JSON.stringify(data));
-              const subscription = this.cartsService.addUser(formData.form.value.email)
-              .subscribe({
-                error:(err)=>{
-                
-                  
-                  console.log(err.message);
-                },
-                complete:()=>{
-                  console.log('Login succcessfully');
-                }
-              })
-        this.destoryRef.onDestroy(()=>subscription.unsubscribe())
-
+            //  window.sessionStorage.setItem('')
+            this.cartsService.userName=formData.form.value.email;
             this.router.navigate(['../'])
           },
           error:(err)=>{
