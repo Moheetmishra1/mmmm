@@ -1,0 +1,10 @@
+<div class="input-data">
+    <input type="{{title.type1}}" name="{{title.first}}" #first (keyup)="onClick(first)" required>
+    <div class="underline" ></div>
+    <label for="">{{title.first[0].toUpperCase()+title.first.slice(1)}}</label>
+ </div>
+ <div class="input-data">
+    <input type="{{title.type2}}" name="{{title.last}}" #last (keyup)="onClick(last)" required>
+    <div class="underline"></div>
+    <label for="">{{title.last[0].toUpperCase()+title.last.slice(1)}}</label>
+ </div>

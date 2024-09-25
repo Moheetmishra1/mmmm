@@ -1,6 +1,6 @@
 
 .loginBack{
-    height: 100vh;
+    height: 83.3vh;
     background-color: rgb(26, 24, 24);
     display: flex;
     justify-content: center;
@@ -18,8 +18,8 @@
     padding: 2em;
     border: 10px double #7961eb;
     border-radius: 1em;
-    background-color: 
-    ;
+    /* background-color:  */
+    
 }
 
 form input{
@@ -70,4 +70,8 @@ input.ng-invalid.ng-touched.ng-dirty {
         /* width: 70vw; */
         height: 55vh;  
     }
+}
+
+*{
+    color: white;
 }

@@ -24,13 +24,21 @@ export class CartsItemComponent {
   }
 
   updateCart(val:string){
+    let index= this.cartsService.allCarts().findIndex(a=>a.id===this.product.id)
+                    console.log("index is ",index, val);
+                    
+    if(  this.cartsService.allCarts()[index].quantity=== 1 && val==='decrease'){
+        this.cartsService.allCarts.update(carts=> carts.filter(a=> a.id!== this.product.id))
+        console.log(this.cartsService.allCarts());
+        
+    } else{
     const subscription = this.cartsService.updateCart(this.product.id,val)
     .subscribe({
-      next:()=>console.log("succesfully added"),
+      next:()=>{},
       error:(err)=>{
         console.log(err);
       }
     });
     this.destroyRef.onDestroy(()=>subscription.unsubscribe())
-  }
+  }}
 }

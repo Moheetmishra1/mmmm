@@ -1,18 +1,93 @@
-<section>
+<!-- <section>
 <header>
 <p>Lorem ipsum dolor sit amet.</p>
 </header>
 
 <div class="formBox">
-    <div class="formTitle">Add</div>
-    <form #form="ngForm" (onSubmit)="addProduct()" >
-        <input type="text" name="title" ngModel>
-        <input type="text" name="description" ngModel>
-        <input type="number" name="number" ngModel>
-        <input type="text" name="image" ngModel>
-        <input type="text" name="category" ngModel>
-        <button type="submit" ><span>Add Product</span></button>
-    </form>
+    <div class="formTitle container">Add</div>
+    <form action="#">
+        <div class="form-row">
+           <div class="input-data">
+              <input type="text" required>
+              <div class="underline"></div>
+              <label for="">First Name</label>
+           </div>
+           <div class="input-data">
+              <input type="text" required>
+              <div class="underline"></div>
+              <label for="">Last Name</label>
+           </div>
+        </div>
+        <div class="form-row">
+           <div class="input-data">
+              <input type="text" required>
+              <div class="underline"></div>
+              <label for="">Email Address</label>
+           </div>
+           <div class="input-data">
+              <input type="text" required>
+              <div class="underline"></div>
+              <label for="">Website Name</label>
+           </div>
+        </div>
+        <div class="form-row">
+        <div class="input-data textarea">
+           <textarea rows="8" cols="80" required></textarea>
+           <br />
+           <div class="underline"></div>
+           <label for="">Write your message</label>
+           <br />
+           <div class="form-row submit-btn">
+              <div class="input-data">
+                 <div class="inner"></div>
+                 <input type="submit" value="submit">
+              </div>
+           </div>
+
+
+
+        </div>
+    </div>
+
+     </form>
 </div>
 
-</section>
+</section> -->
+
+<div class="addProduct">
+
+<div class="container">
+    <div class="text">
+     Add Product
+    </div>
+    <div class="form-error">
+        <span *ngIf="error" style="color: red;">{{error}}</span>
+        <span *ngIf="successful" style="color: green;">{{successful}}</span>
+    </div>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div appInputAddProduct class="form-row" [title]="{first:'title',last:'category',type1:'string',type2:'string'}"   (first)="onFirst($event)"  ></div>
+        <div appInputAddProduct class="form-row"  [title]="{first:'price',last:'image' ,type1:'number',type2:'string'}" (first)="onFirst($event)"   ></div>
+        <!-- <div appInputAddProduct class="form-row" ></div> -->
+       
+     
+       
+       <div class="form-row">
+       <div class="input-data textarea">
+          <textarea rows="8" cols="80" name="description" #description (keyup)="onDescription(description)" required></textarea>
+          <br />
+          <div class="underline"></div>
+          <label for="">Description</label>
+        </div>
+    </div>
+          <!-- <br /> -->
+          <div class="form-row submit-btn">
+             <div class="input-data">
+                <div class="inner"></div>
+                <input type="submit" value="submit">
+             </div>
+          </div>
+          
+    </form>
+    </div>
+
+</div>

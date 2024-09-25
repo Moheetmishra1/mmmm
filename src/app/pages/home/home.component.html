@@ -2,7 +2,9 @@
 <header>
      <app-slider [bannerImgs]="bannerImgs" />
 </header>
-
+<div style="margin: 5px 0;color:white;">
+    <marquee style="background-color: #829bee;">Festival is coming with mega discount</marquee> 
+</div>
 <div *ngIf="isLoading()" style="color: blue;text-align: center;">Loading ....</div>
 <div  class="productList">
      <app-cart *ngFor="let product of products()" [product]="product" />

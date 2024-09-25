@@ -4,6 +4,7 @@ import { LogoComponent } from "../../logo/logo.component";
 import { images } from '../../../assets/login-images/images';
 import { ButtonCompComponent } from "../../button-comp/button-comp.component";
 import { SsComponent } from "../../ss/ss.component";
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { SsComponent } from "../../ss/ss.component";
   standalone:true,
   templateUrl: 'signup.component.html',
   styleUrls: ['signup.component.css'],
-  imports: [LogoComponent, ButtonCompComponent, SsComponent]
+  imports: [LogoComponent, ButtonCompComponent, SsComponent,RouterLink]
 })
 export class SignUpComponent  {
   imagesProperty=images

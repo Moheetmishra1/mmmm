@@ -14,7 +14,7 @@ export class UpdateProductComponent {
   product !:PRODUCT|{};
 
   constructor(private httpClient:HttpClient){
-    this.product.
+    // this.product.
   }
 
 }

@@ -74,25 +74,26 @@ export class CartsService {
     }
 
     updateCart(productId:number,val:string){
+       
+
         return this.httpClient.put('https://fakestoreapi.com/carts/7',{
             userId:3,
             date:2019-12-10,
             products:[{productId:1,quantity:3}]
         }).pipe(
             tap({
-                next:()=>this.allCarts.update((carts)=> carts.map(a=>{
+                next:()=>{
+                    this.allCarts.update((carts)=> carts.map(a=>{
                     if(productId=== a.id){
-
-                        if(val=== 'add'){
+                        if(val=== 'increase'){
                            a.quantity+=1
                             return a
                         }else{
                             a.quantity-=1
                         }
-                       
                     }
                     return a;
-                }))
+                }))}
             })
         )
     }

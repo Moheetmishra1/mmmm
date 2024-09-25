@@ -11,6 +11,7 @@ import { SpecificCategoryComponent } from './pages/products/specific-category/sp
 import { CartComponent } from './cart/cart.component';
 import { CartsComponent } from './pages/carts/carts.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { UserComponent } from './pages/user/user.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,10 @@ export const routes: Routes = [
             }
            
         ]
+    },
+    {
+        path:'home/user',
+        component:UserComponent
     },
     
     {

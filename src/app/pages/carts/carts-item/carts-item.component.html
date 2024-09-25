@@ -48,18 +48,13 @@
             </div>
              {{product.quantity}} 
              <div  class="update">
-              <button (click)="updateCart('add')"  >+</button>
+              <button (click)="updateCart('increase')"  >+</button>
              </div>
              </td>
         <td _ngcontent-ng-c525090438="" class="d-flex flex-column">   {{product.price}}</td>
         <td _ngcontent-ng-c525090438="" class="font-weight-bold">
-          {{product.quantity}}
-          <!-- <div _ngcontent-ng-c525090438="" class="close">×</div> -->
-          <!-- <button
-            _ngcontent-ng-c525090438=""
-            class="d-flex justify-content-end align-items-end btn border"
-          >
-          </button> -->
+          {{(product.quantity*product.price).toFixed(2)}}
+         
         </td >
         <td style="border: none;" >
           <button (click)="deleteCart()">
