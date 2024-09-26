@@ -1,9 +1,9 @@
-import { UserService } from './../../user.service';
 import { USERTYPE } from './../../models/userType';
 import { HttpClient } from '@angular/common/http';
 import { CartsService } from './../carts/carts.service';
-import { Component, computed, DestroyRef, inject, input, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, Input, input, signal } from '@angular/core';
 import {  ActivatedRouteSnapshot, CanMatchFn, RedirectCommand, ResolveFn, Router, RouterState, RouterStateSnapshot } from '@angular/router';
+import { UserService } from './user.service';
 
 
 
@@ -15,40 +15,23 @@ import {  ActivatedRouteSnapshot, CanMatchFn, RedirectCommand, ResolveFn, Router
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  user =signal<USERTYPE|undefined>(undefined);
+  @Input({required:true}) username !:string;
+  user = signal<USERTYPE|undefined>(undefined);
+
+  private userService= inject(UserService)
+  private destroyRef= inject(DestroyRef)
   message= input<string>()
-  constructor (private cartsService :CartsService,private httpClient:HttpClient,private destroyRef:DestroyRef){  }
+
   ngOnInit(){
-    console.log(this.message);
-    
-    // console.log("userName ",this.cartsService.userName);
-    
-    const subscription = this.cartsService.addUser()
-    .subscribe({
-      next:(userDetails)=>{
-        console.log(userDetails);
-        if(userDetails){
-          
-          this.user.set(userDetails)
-          console.log("enter", this.user());
-          console.log(this.user());
-          
-        }
-    // console.log(this.user());
-
-      },
-      error:(err)=>{
-        console.log(err);
-      },
-      complete:()=>{
-        console.log("completed");
-      }
-    });
-    this.destroyRef.onDestroy(()=>subscription.unsubscribe())
-
-
-    // console.log(this.user());
-    
+    const subscription = this.userService.getUser(this.username)
+        .subscribe({
+          next:(userData)=>{
+            console.log(userData);
+            
+            if(userData)
+            this.user.set(userData)}
+        })
+        this.destroyRef.onDestroy(()=>subscription.unsubscribe())
   }
 
 

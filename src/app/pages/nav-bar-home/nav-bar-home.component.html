@@ -6,10 +6,10 @@
     <div class="profile" >
         <div class="profile-img" (click)="OnVisible()" >
             <ul *ngIf="isVisibile">
-                <li><a [routerLink]="['home','user']" style="color: black;">Profile</a></li>
+                <li><a [routerLink]="['home','user',userName]" style="color: black;">Profile  </a> </li>
                 <li><a routerLink="">All Users</a></li>
                 <li><a routerLink="">New Product</a></li>
-                <li><button>logout <img src="assets/switch.png" alt=""></button></li>
+                <li><button (click)="logout()">logout <img src="assets/switch.png" alt=""></button></li>
             </ul>
         </div>
     </div>

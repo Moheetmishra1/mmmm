@@ -26,7 +26,9 @@ export const routes: Routes = [
     {
         path:'',
         component:HomeComponent,
+
         title:"Main page",
+
         // canMatch:[routeGaurd] 
     },
     {
@@ -34,16 +36,21 @@ export const routes: Routes = [
         component:ViewComponent
     },{
         path:'addproduct',
-        component:AddProductComponent
+        component:AddProductComponent,
+        canMatch:[routeGaurd]
     },
     {
         path:'products/:category',
         component:ProductsComponent,
+        canMatch:[routeGaurd],
+
         children:productRoutes 
     },
     {
-        path:'home/user',
+        path:'home/user/:username',
         component:UserComponent,
+        canMatch:[routeGaurd],
+
         resolve:{
             message:getUserDetails  
         }
@@ -51,7 +58,8 @@ export const routes: Routes = [
     
     {
         path:'signup',
-        component:SignUpComponent
+        component:SignUpComponent,
+
     },
     {
         path:'login',
@@ -59,7 +67,9 @@ export const routes: Routes = [
     },
     {
         path:'carts',
-        component:CartsComponent
+        component:CartsComponent,
+        canMatch:[routeGaurd],
+
     }
     ,
     {

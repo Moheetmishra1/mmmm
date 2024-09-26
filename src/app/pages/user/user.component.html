@@ -8,15 +8,14 @@
             <div class="details">
                 <!-- <h1>{{cartsService.userName}}</h1> -->
                 <p>User Name: </p>
-            <!-- <p>{{user()?.username }} </p> -->
+            <p>{{user()?.username }} </p>
             <p>Name2:</p>
-            <!-- <p>{{user()?.name.firstname}}</p> -->
+            <p>{{user()?.name?.firstname}} {{user()?.name?.lastname}}</p>
             <p>Phone</p>
-            <!-- <p> zz{{user()?.name.lastname}}</p> -->
-            <!-- <p>{{user()?.phone }}</p> -->
+            <p>{{user()?.phone }}</p>
 
             <p>Email: </p>
-            <!-- <p>{{user()?email}}</p> -->
+            <p>{{user()?.email}}</p>
             
             </div>
             <!-- <input type="text">

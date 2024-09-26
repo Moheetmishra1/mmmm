@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { CartsService } from '../carts/carts.service';
 
 @Component({
   selector: 'app-nav-bar-home',
@@ -11,8 +12,15 @@ import { RouterLink } from '@angular/router';
 })
 export class NavBarHomeComponent {
   isVisibile=false;
+  private cartsService=inject(CartsService)
+  private router = inject(Router)
+  userName=this.cartsService.userName
 
   OnVisible(){
     this.isVisibile=!this.isVisibile
+  }
+  logout(){
+    this.cartsService.userName=''
+    this.router.navigate(['login'])
   }
 }

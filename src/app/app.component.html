@@ -1,5 +1,6 @@
 <div class="body">
-    <app-nav-bar-home  #hiddenNav/>
-    <app-navbar #scrollNav  (mouseover)="showNav()"/>
+    <app-nav-bar-home  *ngIf="userName" #hiddenNav/>
+    <!-- <h1>{{userName()}}</h1> -->
+    <app-navbar #scrollNav  *ngIf="userName" (mouseover)="showNav()"/>
     <hr>
 <router-outlet />
