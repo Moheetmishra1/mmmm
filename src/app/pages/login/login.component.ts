@@ -76,7 +76,6 @@ export class LoginComponent {
   }
   
   removeError(){
-    console.log("enter");
     
     this.eee=''
   }

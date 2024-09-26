@@ -1,7 +1,7 @@
 export interface USERTYPE {
     address:{
         city:string,
-        grolocation:{
+        geolocation:{
             lat:string,
             long:string
         },

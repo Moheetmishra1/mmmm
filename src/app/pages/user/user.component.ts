@@ -1,7 +1,11 @@
+import { UserService } from './../../user.service';
+import { USERTYPE } from './../../models/userType';
 import { HttpClient } from '@angular/common/http';
 import { CartsService } from './../carts/carts.service';
-import { Component, DestroyRef, inject } from '@angular/core';
-import { USERTYPE } from '../../models/userType';
+import { Component, computed, DestroyRef, inject, input, signal } from '@angular/core';
+import {  ActivatedRouteSnapshot, CanMatchFn, RedirectCommand, ResolveFn, Router, RouterState, RouterStateSnapshot } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-user',
@@ -11,16 +15,27 @@ import { USERTYPE } from '../../models/userType';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  user:USERTYPE|{}={};
+  user =signal<USERTYPE|undefined>(undefined);
+  message= input<string>()
   constructor (private cartsService :CartsService,private httpClient:HttpClient,private destroyRef:DestroyRef){  }
-
   ngOnInit(){
-    console.log();
+    console.log(this.message);
+    
+    // console.log("userName ",this.cartsService.userName);
     
     const subscription = this.cartsService.addUser()
     .subscribe({
       next:(userDetails)=>{
-        this.user=userDetails
+        console.log(userDetails);
+        if(userDetails){
+          
+          this.user.set(userDetails)
+          console.log("enter", this.user());
+          console.log(this.user());
+          
+        }
+    // console.log(this.user());
+
       },
       error:(err)=>{
         console.log(err);
@@ -30,7 +45,29 @@ export class UserComponent {
       }
     });
     this.destroyRef.onDestroy(()=>subscription.unsubscribe())
+
+
+    // console.log(this.user());
+    
   }
 
 
+}
+
+
+export  const getUserDetails:ResolveFn<string> = (activatedRoute:ActivatedRouteSnapshot, routerState:RouterStateSnapshot)=>{
+
+  const httpClient = inject(HttpClient);
+   const cartsService = inject(CartsService);
+
+   let user={};
+  const res=  httpClient.get('https://fakestoreapi.com/users').subscribe({
+    next:(val)=>{
+      user=val
+    }
+  });
+  console.log("Result ", user)
+  
+
+return 'mohit'
 }

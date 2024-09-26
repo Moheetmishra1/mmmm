@@ -2,7 +2,7 @@ import { PRODUCT } from './../../models/product';
 import { computed, inject, Injectable, signal } from "@angular/core";
 import { CARTS, USER } from './carts.model';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 
 @Injectable({
@@ -65,7 +65,8 @@ export class CartsService {
                     this.user.set(obj)
                 }
                 }
-            })
+            }),
+            map(a=>a.find(user=> user.username=== this.userName))
         )
     }
 
