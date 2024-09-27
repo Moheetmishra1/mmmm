@@ -1,25 +1,13 @@
-<main>
-    <div class="profileDetails">
-        <section class="section1">
-            <img src="assets/e-1.jpg" alt="">
-            <button><span>Edit</span></button>
-        </section>
-        <section class="section2">
-            <div class="details">
-                <!-- <h1>{{cartsService.userName}}</h1> -->
-                <p>User Name: </p>
-            <p>{{user()?.username }} </p>
-            <p>Name2:</p>
-            <p>{{user()?.name?.firstname}} {{user()?.name?.lastname}}</p>
-            <p>Phone</p>
-            <p>{{user()?.phone }}</p>
 
-            <p>Email: </p>
-            <p>{{user()?.email}}</p>
-            
-            </div>
-            <!-- <input type="text">
-            <input type="text"><input type="text"> -->
-        </section>
+
+<main>
+    <div class="editButton">
+
+        <button  (click)="updateProfile()" ><span>{{updateDetails}}</span></button>
     </div>
+    
+    <router-outlet  />
+
+    <!-- <div>
+    </div> -->
 </main>

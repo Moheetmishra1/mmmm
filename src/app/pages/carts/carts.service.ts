@@ -71,6 +71,8 @@ export class CartsService {
         )
     }
 
+
+    
     deleteCart(productId:number){
 
         return this.httpClient.delete('https://fakestoreapi.com/carts/6').pipe(

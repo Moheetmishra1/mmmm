@@ -2,11 +2,11 @@
     <a routerLink="">HOME</a>
     <a routerLink="addproduct">Add Product</a>
     <div class="profile-cart">
+        <div class="profile" >
 
-    <div class="profile" >
         <div class="profile-img" (click)="OnVisible()" >
             <ul *ngIf="isVisibile">
-                <li><a [routerLink]="['home','user',userName]" style="color: black;">Profile  </a> </li>
+                <li><a [routerLink]="['user',userName,'details']" style="color: black;">Profile  </a> </li>
                 <li><a routerLink="">All Users</a></li>
                 <li><a routerLink="">New Product</a></li>
                 <li><button (click)="logout()">logout <img src="assets/switch.png" alt=""></button></li>

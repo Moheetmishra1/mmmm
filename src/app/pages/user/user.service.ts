@@ -1,4 +1,4 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { USERTYPE } from "../../models/userType";
 import { HttpClient } from "@angular/common/http";
 import { map, tap } from "rxjs";
@@ -7,7 +7,7 @@ import { map, tap } from "rxjs";
     providedIn:'root'
 })
 export class UserService{
-user:USERTYPE|{}={}
+user= signal<USERTYPE|undefined>(undefined)
 
 private httpClient= inject(HttpClient)
 
@@ -17,7 +17,7 @@ getUser(username:string){
     .pipe(  map((data)=>data.find(a=>a.username=== username)) ,tap({
         next:((userData)=>{
             if(userData)
-            this.user=userData})
+            this.user.set(userData)})
     }));
 }
 

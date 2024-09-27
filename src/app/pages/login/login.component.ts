@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal, ElementRef } from '@angular/core';
 import { LogoComponent } from "../../logo/logo.component";
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -21,7 +21,7 @@ export class LoginComponent {
   private destoryRef= inject(DestroyRef)
   private router = inject(Router)
   private cartsService= inject(CartsService)
-  private userService = inject(UserService)
+  // private userService = inject(UserService)
   // authenticationError  = signal({error:false,messege:''})
 
   eee=''
@@ -51,7 +51,8 @@ export class LoginComponent {
 
     const subscription = this.httpClient.post('https://fakestoreapi.com/auth/login',{
                 username: formData.form.value.email,
-                password: formData.form.value.password 
+                // password: formData.form.value.password 
+                password:'m38rmF$'
         })
         .subscribe({
           next:(data)=>{
@@ -59,7 +60,11 @@ export class LoginComponent {
             
             window.sessionStorage.setItem('token',JSON.stringify(data));
             //  window.sessionStorage.setItem('')
+            console.log("login user's name set" , formData.form.value.email);
+            
             this.cartsService.userName=formData.form.value.email;
+            console.log("login ", this.cartsService.userName, "and ", formData.form.value.email);
+            
             this.router.navigate(['../'])
           },
           error:(err)=>{

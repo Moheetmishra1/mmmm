@@ -1,0 +1,176 @@
+<!-- <form id="profile-update-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="John@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="johnd">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="m38rmF$">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" value="1-570-236-7033">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="name.firstname" value="John">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="name.lastname" value="Doe">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="address.city" value="kilcoole">
+      </div>
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="address.street" value="7835 new road">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="address.number" value="3">
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Zipcode:</label>
+        <input type="text" id="zipcode" name="address.zipcode" value="12926-3874">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lat">Latitude:</label>
+        <input type="text" id="lat" name="address.geolocation.lat" value="-37.3159">
+      </div>
+      <div class="form-group">
+        <label for="long">Longitude:</label>
+        <input type="text" id="long" name="address.geolocation.long" value="81.1496">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image">
+      </div>
+    </div>
+    <button type="submit" style="width: 100%; height: 40px; background-color: #4CAF50; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Update Profile</button>
+  </form> -->
+
+
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input formControlName="email" type="email" id="email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Invalid email</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input formControlName="username" type="text" id="username">
+        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+          <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input formControlName="password" type="password" id="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input formControlName="phone" type="tel" id="phone">
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+          <div *ngIf="phone.errors.required">Phone is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input formControlName="firstname" type="text" id="firstname">
+        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+          <div *ngIf="firstname.errors.required">First name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input formControlName="lastname" type="text" id="lastname">
+        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+          <div *ngIf="lastname.errors.required">Last name is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input formControlName="city" type="text" id="city">
+        <div *ngIf="city.invalid && (city.dirty || city.touched)">
+          <div *ngIf="city.errors.required">City is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input formControlName="street" type="text" id="street">
+        <div *ngIf="street.invalid && (street.dirty || street.touched)">
+          <div *ngIf="street.errors.required">Street is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input formControlName="number" type="number" id="number">
+        <div *ngIf="number.invalid && (number.dirty || number.touched)">
+          <div *ngIf="number.errors.required">Number is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Zipcode:</label>
+        <input formControlName="zipcode" type="text" id="zipcode">
+        <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)">
+          <div *ngIf="zipcode.errors.required">Zipcode is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lat">Latitude:</label>
+        <input formControlName="lat" type="text" id="lat">
+        <div *ngIf="lat.invalid && (lat.dirty || lat.touched)">
+          <div *ngIf="lat.errors.required">Latitude is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="long">Longitude:</label>
+        <input formControlName="long" type="text" id="long">
+        <input type="text" id="long" name="address.geolocation.long" value="81.1496">
+    </div>
+  <!-- </div> -->
+  <div class="form-row">
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="text" id="image" name="image">
+    </div>
+  </div>
+  <button type="submit" style="width: 100%; height: 40px; background-color: #4CAF50; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Update Profile</button>
+</form>

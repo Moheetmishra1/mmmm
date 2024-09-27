@@ -11,6 +11,8 @@ import { getUserDetails, UserComponent } from './pages/user/user.component';
 import { routes  as productRoutes } from './pages/products/product.routes';
 import { inject } from '@angular/core';
 import { CartsService } from './pages/carts/carts.service';
+import { UserDetailsComponent } from './pages/user/user-details/user-details.component';
+import { UserUpdateComponent } from './pages/user/user-update/user-update.component';
 
 const routeGaurd:CanMatchFn =(route,segmant)=>{
     const rou = inject(Router)
@@ -18,7 +20,6 @@ const routeGaurd:CanMatchFn =(route,segmant)=>{
     if(cartsService.userName){
       return true;
     }
-  
     return new RedirectCommand(rou.parseUrl('login'))
   }
 
@@ -29,7 +30,6 @@ export const routes: Routes = [
 
         title:"Main page",
 
-        // canMatch:[routeGaurd] 
     },
     {
         path:'view/:productId',
@@ -47,10 +47,25 @@ export const routes: Routes = [
         children:productRoutes 
     },
     {
-        path:'home/user/:username',
+        path:'user/:username',
         component:UserComponent,
-        canMatch:[routeGaurd],
-
+        // canMatch:[routeGaurd],
+        // redirectTo:'details',
+        // pathMatch
+        // redirectTo:'details',
+        // pathMatch:'prefix'
+        // ,
+        children:[
+            {
+                path:'details',
+                component:UserDetailsComponent
+            },
+            {
+                path:'update',
+                component:UserUpdateComponent
+            }
+        ],
+// 
         resolve:{
             message:getUserDetails  
         }
